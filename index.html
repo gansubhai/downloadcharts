@@ -72,18 +72,7 @@
 <li>
 <p>Now add following methods in your controller.</p>
 
-<p>`$scope.exportData = function (id) {
-                                var el = document.createElement( 'html' );
-                                el.innerHTML =document.getElementById(id).innerHTML;
-                                var svgContent=el.getElementsByTagName( 'svg' );
-                                var contentModified=svgContent[0].outerHTML;
-                                contentModified=contentModified.replace('style="height: 450px; width: 100%;"','style="height: 450px; width: 100%;fill:#fff;"');
-                                contentModified=contentModified.replace(new RegExp('style="text-anchor: middle;"', 'g'), 'style="text-anchor: middle;fill:black;"');
-                                contentModified=contentModified.replace(new RegExp('style="text-anchor: end;"', 'g'), 'style="text-anchor: end;fill:black;"');
-                                $scope.render(contentModified,1500,500);</p>
-
-<pre><code>                            };`
-</code></pre>
+<p><code>$scope.exportData = function (id) {</code></p>
 </li>
 </ol>
 
