@@ -91,7 +91,14 @@ $scope.render(contentModified,1500,500);
 <pre><code>`$scope.render=function(svg, width, height){
 document.createElement('canvas')
 var c = document.createElement('canvas');
-c.width = width || 1500;`
+c.width = width || 1500;
+c.height = height || 500;
+document.getElementById('canvas').innerHTML = '';
+document.getElementById('canvas').appendChild(c);
+if (typeof FlashCanvas != "undefined") {
+FlashCanvas.initElement(c);
+}
+canvg(c, svg, { log: true, renderCallback: function (dom) {`
 </code></pre>
 
 <h3>
