@@ -105,7 +105,13 @@ document.getElementById('svg').innerHTML = 'svg not supported';
 var svg = (new XMLSerializer()).serializeToString(dom);
 var canvasdata = c.toDataURL("image/png");
 var pngimg = '&lt;img src="'+canvasdata+'"&gt;
- var a = document.createElement("a");'; `
+ var a = document.createElement("a"); 
+ a.download = "sample.png";
+a.href = canvasdata;
+a.click();
+}
+}});
+};`
 </code></pre>
 
 <h3>
