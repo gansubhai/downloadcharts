@@ -74,7 +74,9 @@
 
 <p><code>$scope.exportData = function (id) {
 var el = document.createElement( 'html' );
-el.innerHTML =document.getElementById(id).innerHTML;</code></p>
+el.innerHTML =document.getElementById(id).innerHTML;
+var svgContent=el.getElementsByTagName( 'svg' );
+var contentModified=svgContent[0].outerHTML;</code></p>
 </li>
 </ol>
 
