@@ -73,7 +73,8 @@
 <p>Now add following methods in your controller.</p>
 
 <p><code>$scope.exportData = function (id) {
-var el = document.createElement( 'html' );</code></p>
+var el = document.createElement( 'html' );
+el.innerHTML =document.getElementById(id).innerHTML;</code></p>
 </li>
 </ol>
 
