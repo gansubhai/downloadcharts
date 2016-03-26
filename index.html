@@ -72,8 +72,7 @@
 <li>
 <p>Now add following methods in your controller.</p>
 
-<p>//method-1
-$scope.exportData = function (id) {
+<p>`$scope.exportData = function (id) {
                                 var el = document.createElement( 'html' );
                                 el.innerHTML =document.getElementById(id).innerHTML;
                                 var svgContent=el.getElementsByTagName( 'svg' );
@@ -83,45 +82,7 @@ $scope.exportData = function (id) {
                                 contentModified=contentModified.replace(new RegExp('style="text-anchor: end;"', 'g'), 'style="text-anchor: end;fill:black;"');
                                 $scope.render(contentModified,1500,500);</p>
 
-<pre><code>                            };
-</code></pre>
-
-<p>//method-2
-$scope.render=function(svg, width, height)
-{
-document.createElement('canvas')
-        var c = document.createElement('canvas');<br>
-        c.width = width || 1500;
-        c.height = height || 500;
-        document.getElementById('canvas').innerHTML = '';
-        document.getElementById('canvas').appendChild(c);
-        if (typeof FlashCanvas != "undefined") {
-            FlashCanvas.initElement(c);
-        }
-        canvg(c, svg, { log: true, renderCallback: function (dom) {
-            if (typeof FlashCanvas != "undefined") {
-                document.getElementById('svg').innerHTML = 'svg not supported';
-            } else {
-                var svg = (new XMLSerializer()).serializeToString(dom);
-                //document.getElementById('svg').innerHTML = svg;
-                //tewsr</p>
-
-<pre><code>              var canvasdata = c.toDataURL("image/png");
-
-              var pngimg = '&lt;img src="'+canvasdata+'"&gt;'; 
-              //d3.select("#pngdataurl").html(pngimg);
-
-              var a = document.createElement("a");
-              a.download = "sample.png";
-              a.href = canvasdata;
-              a.click();
-
-            //jijo
-
-
-        }
-    }});
-        };
+<pre><code>                            };`
 </code></pre>
 </li>
 </ol>
