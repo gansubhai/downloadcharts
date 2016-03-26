@@ -72,7 +72,7 @@
 <li><p>Now add following methods in your controller.</p></li>
 </ol>
 
-<p>`$scope.exportData = function (id) {
+<p><code>$scope.exportData = function (id) {
     var el = document.createElement( 'html' );
     el.innerHTML =document.getElementById(id).innerHTML;
     var svgContent=el.getElementsByTagName( 'svg' );
@@ -81,7 +81,7 @@
     contentModified=contentModified.replace(new RegExp('style="text-anchor: middle;"', 'g'), 'style="text-anchor: middle;fill:black;"');
     contentModified=contentModified.replace(new RegExp('style="text-anchor: end;"', 'g'), 'style="text-anchor: end;fill:black;"');
     $scope.render(contentModified,1500,500);
-    };</p>
+    };</code></p>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
