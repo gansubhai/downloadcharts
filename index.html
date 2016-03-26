@@ -75,10 +75,10 @@
 <p>//METHOD-1</p>
 
 <pre><code>`$scope.exportData = function (id) {
+var el = document.createElement( 'html' );
 </code></pre>
 
-<p>var el = document.createElement( 'html' );
-el.innerHTML =document.getElementById(id).innerHTML;
+<p>el.innerHTML =document.getElementById(id).innerHTML;
 var svgContent=el.getElementsByTagName( 'svg' );
 var contentModified=svgContent[0].outerHTML;
 contentModified=contentModified.replace('style="height: 450px; width: 100%;"','style="height: 450px; width: 100%;fill:#fff;"');
