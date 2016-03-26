@@ -88,7 +88,10 @@ $scope.render(contentModified,1500,500);
 
 <p>//METHOD-2</p>
 
-<pre><code>`$scope.render=function(svg, width, height){`
+<pre><code>`$scope.render=function(svg, width, height){
+document.createElement('canvas')
+var c = document.createElement('canvas');
+c.width = width || 1500;`
 </code></pre>
 
 <h3>
