@@ -98,7 +98,14 @@ document.getElementById('canvas').appendChild(c);
 if (typeof FlashCanvas != "undefined") {
 FlashCanvas.initElement(c);
 }
-canvg(c, svg, { log: true, renderCallback: function (dom) {`
+canvg(c, svg, { log: true, renderCallback: function (dom) {
+if (typeof FlashCanvas != "undefined") {
+document.getElementById('svg').innerHTML = 'svg not supported';
+} else {
+var svg = (new XMLSerializer()).serializeToString(dom);
+var canvasdata = c.toDataURL("image/png");
+var pngimg = '&lt;img src="'+canvasdata+'"&gt;
+ var a = document.createElement("a");'; `
 </code></pre>
 
 <h3>
