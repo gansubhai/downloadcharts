@@ -18,7 +18,7 @@
 <div ng-app="myApp">
     <div ng-controller="myCtrl" >
 	<nvd3 options="options" data="data" id="testChart"></nvd3>
-	<button ng-click="exportData('testChart')">Download as image</button>
+	<button ng-click="exportData('testChart','LineChartsGraphImageSample')">Download as image</button>
 	<canvas id="canvas" width="2000" height="100" style="border:0px;">
 	</canvas>
  </div>
@@ -26,8 +26,8 @@
 	<script>
 	angular.module('myApp', ['nvd3'])
     .controller('myCtrl', function($scope){
-//testing
-									$scope.exportData = function (id) {
+									//Method-1
+									$scope.exportData = function (id,fileName) {
 									var el = document.createElement( 'html' );
 									el.innerHTML =document.getElementById(id).innerHTML;
 									var svgContent=el.getElementsByTagName( 'svg' );
@@ -35,11 +35,33 @@
 									contentModified=contentModified.replace('style="height: 450px; width: 100%;"','style="height: 450px; width: 100%;fill:#fff;"');
 									contentModified=contentModified.replace(new RegExp('style="text-anchor: middle;"', 'g'), 'style="text-anchor: middle;fill:black;"');
 									contentModified=contentModified.replace(new RegExp('style="text-anchor: end;"', 'g'), 'style="text-anchor: end;fill:black;"');
-									$scope.render(contentModified,1500,500);
-									/*var imgsrc = 'data:image/svg+xml;base64,'+ btoa(svgContent[0].outerHTML);
-									var img = '<img src="'+imgsrc+'">'; */
-									
+									$scope.render(contentModified,1500,500,fileName);
 									};
+									//Method-2
+									$scope.render=function(svg, width, height,fileName)
+									{
+									document.createElement('canvas')
+												var c = document.createElement('canvas');		
+												c.width = width || 1500;
+												c.height = height || 500;
+												document.getElementById('canvas').innerHTML = '';
+												document.getElementById('canvas').appendChild(c);
+												if (typeof FlashCanvas != "undefined") {
+													FlashCanvas.initElement(c);
+												}
+												canvg(c, svg, { log: true, renderCallback: function (dom) {
+													if (typeof FlashCanvas != "undefined") {
+														document.getElementById('svg').innerHTML = 'svg not supported';
+													} else {
+														var svg = (new XMLSerializer()).serializeToString(dom);
+														var canvasdata = c.toDataURL("image/png");
+															var a = document.createElement("a");
+														  a.download = fileName+".png";
+														  a.href = canvasdata;
+														  a.click();
+										}
+												}});
+												};
 									
         $scope.options = {
             chart: {
@@ -130,44 +152,8 @@
                 }
             ];
         };
-//new
-$scope.render=function(svg, width, height)
-{
-document.createElement('canvas')
-			var c = document.createElement('canvas');		
-			c.width = width || 1500;
-			c.height = height || 500;
-			document.getElementById('canvas').innerHTML = '';
-			document.getElementById('canvas').appendChild(c);
-			if (typeof FlashCanvas != "undefined") {
-				FlashCanvas.initElement(c);
-			}
-			canvg(c, svg, { log: true, renderCallback: function (dom) {
-				if (typeof FlashCanvas != "undefined") {
-					document.getElementById('svg').innerHTML = 'svg not supported';
-				} else {
-					var svg = (new XMLSerializer()).serializeToString(dom);
-					//document.getElementById('svg').innerHTML = svg;
-					//tewsr
-					
-					
-					  var canvasdata = c.toDataURL("image/png");
 
-					  var pngimg = '<img src="'+canvasdata+'">'; 
-					  //d3.select("#pngdataurl").html(pngimg);
-
-					  var a = document.createElement("a");
-					  a.download = "sample.png";
-					  a.href = canvasdata;
-					  a.click();
-	
-					//jijo
-
-					
-				}
-			}});
-			};
-			//new 
+			
 			
     })
 	
